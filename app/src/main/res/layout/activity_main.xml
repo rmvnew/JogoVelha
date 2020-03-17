@@ -16,7 +16,13 @@
         android:adjustViewBounds="false"
         android:scaleType="centerInside"/>
 
-    
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Clique para iniciar"
+        android:layout_gravity="center_vertical|center_horizontal"/>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -106,22 +112,40 @@
 
     </TableLayout>
 
+<!--    <Button-->
+<!--        android:id="@+id/restart"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_weight="2"-->
+<!--        android:background="@color/AZUL_STEEL_BLUE"-->
+<!--        android:text="REINICIAR"-->
+<!--        android:textColor="@color/BRANCO"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textAppearance="?android:textAppearanceLarge"-->
+<!--        android:onClick="restart"/>-->
+
     <Button
         android:id="@+id/restart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@color/AZUL_STEEL_BLUE"
-        android:text="REINICIAR"
-        android:textColor="@color/BRANCO"
-        android:textStyle="bold"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:onClick="restart"/>
+
+        android:text="Reiniciar"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:background="@drawable/btn_iniciar"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:shadowRadius="5"
+        android:onClick="restart"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="by Ricardo Vilela"
+        android:hint="by RMV"
         android:textColor="@color/BRANCO"
         android:textAlignment="center"
         android:textSize="16dp"/>

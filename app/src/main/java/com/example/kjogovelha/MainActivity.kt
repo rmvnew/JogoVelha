@@ -1,40 +1,69 @@
 package com.example.kjogovelha
 
-import androidx.appcompat.app.AppCompatActivity
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.kjogovelha.base.PrinterBase
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     val playerOne = arrayListOf<Int>()
     val playerTwo = arrayListOf<Int>()
     var currentPlayer = 1
+    var jogo_rodando = true
+    var jogador_vencedor = "player"
+    var rodadas = 1
+
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        status.text = "Clique para iniciar!"
     }
+
+
 
     fun play(position: Int, btnSelected: Button){
-        if(currentPlayer == 1){
-            btnSelected.text = "X"
-            btnSelected.setBackgroundResource(R.color.AMARELO)
-            playerOne.add(position)
-            currentPlayer = 2
-        }else{
-            btnSelected.text = "O"
-            btnSelected.setBackgroundResource(R.color.VERDE_CLARO)
-            playerTwo.add(position)
-            currentPlayer = 1
-        }
-        btnSelected.isClickable = false
 
-        checkResult()
+       if(jogo_rodando && rodadas <= 9) {
+
+           if (currentPlayer == 1) {
+               btnSelected.text = "X"
+               btnSelected.setBackgroundResource(R.color.AMARELO)
+               playerOne.add(position)
+               status.text = "Player 1 jogou"
+               currentPlayer = 2
+           } else {
+               btnSelected.text = "O"
+               btnSelected.setBackgroundResource(R.color.VERDE_CLARO)
+               playerTwo.add(position)
+               status.text = "Player 2 jogou"
+               currentPlayer = 1
+           }
+
+           btnSelected.isClickable = false
+
+           checkResult()
+           rodadas++
+
+
+       }else{
+           if(rodadas == 9){
+               Toast.makeText(this,"Jogo empatado. \nClique em reinicar para jogar novamente!!",Toast.LENGTH_LONG).show()
+
+           }else{
+               Toast.makeText(this,"$jogador_vencedor ganhou. \nClique em reinicar para jogar novamente!!",Toast.LENGTH_LONG).show()
+           }
+       }
+
     }
+
 
     fun btnPosition(view: View) = when(view.id){
 
@@ -77,9 +106,43 @@ class MainActivity : AppCompatActivity() {
         }
 
         when(winner){
-            1 -> Toast.makeText(this,"Parabens!! Jogador 1 Venceu",Toast.LENGTH_LONG).show()
-            2 -> Toast.makeText(this,"Parabens!! Jogador 2 Venceu",Toast.LENGTH_LONG).show()
+            1 -> gameOver("Parabens!! Player 1 Venceu","Player 1",1)
+            2 -> gameOver("Parabens!! Player 2 Venceu", "Player 2",2)
         }
+
+
+
+    }
+
+
+    fun gameOver(frase:String, jogador:String, vencedor:Int){
+
+        var printer = PrinterBase(this)
+        printer.setupPrinter()
+
+        Toast.makeText(this,frase,Toast.LENGTH_LONG).show()
+        status.text = "Payer $jogador ganhou!!!"
+        jogo_rodando = false
+
+        if(vencedor == 1){
+            jogador_vencedor = "Player 1"
+
+//            Thread(Runnable {
+//                printer.init()
+//                printer.printStr("Player 1 venceu",null)
+//                printer.start()
+//            }).start()
+
+        }else{
+            jogador_vencedor = "Player 2"
+//            Thread(Runnable {
+//                printer.init()
+//                printer.printStr("Player 2 venceu",null)
+//                printer.start()
+//            }).start()
+        }
+
+
 
     }
 
@@ -87,6 +150,8 @@ class MainActivity : AppCompatActivity() {
         playerOne.clear()
         playerTwo.clear()
         setContentView(R.layout.activity_main)
+        jogo_rodando = true
+        rodadas = 1
     }
 
 }
