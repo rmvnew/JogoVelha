@@ -145,9 +145,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="by RMV"
-        android:textColor="@color/BRANCO"
+        android:hint="by: Ricardo m Vilela"
         android:textAlignment="center"
-        android:textSize="16dp"/>
+        android:textColor="@android:color/background_light"
+        android:textColorHint="@color/VERDE_ESCURO_DARK"
+        android:textSize="12sp"
+        android:textStyle="italic" />
 
 </LinearLayout>

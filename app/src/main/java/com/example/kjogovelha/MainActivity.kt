@@ -1,9 +1,12 @@
 package com.example.kjogovelha
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kjogovelha.base.PrinterBase
@@ -117,8 +120,8 @@ class MainActivity : AppCompatActivity() {
 
     fun gameOver(frase:String, jogador:String, vencedor:Int){
 
-        var printer = PrinterBase(this)
-        printer.setupPrinter()
+//        var printer = PrinterBase(this)
+//        printer.setupPrinter()
 
         Toast.makeText(this,frase,Toast.LENGTH_LONG).show()
         status.text = "Payer $jogador ganhou!!!"
@@ -126,7 +129,7 @@ class MainActivity : AppCompatActivity() {
 
         if(vencedor == 1){
             jogador_vencedor = "Player 1"
-
+            abrirDialogo("Player 1")
 //            Thread(Runnable {
 //                printer.init()
 //                printer.printStr("Player 1 venceu",null)
@@ -135,6 +138,7 @@ class MainActivity : AppCompatActivity() {
 
         }else{
             jogador_vencedor = "Player 2"
+            abrirDialogo("Player 2")
 //            Thread(Runnable {
 //                printer.init()
 //                printer.printStr("Player 2 venceu",null)
@@ -147,11 +151,41 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun restart(view: View){
+        reiniciar()
+    }
+
+    fun reiniciar(){
         playerOne.clear()
         playerTwo.clear()
         setContentView(R.layout.activity_main)
         jogo_rodando = true
         rodadas = 1
+
+    }
+
+    fun abrirDialogo(player:String){
+
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Fim de jogo")
+        builder.setMessage("$player ganhou!!\niniciar novo jogo?")
+        //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
+        builder.setPositiveButton("Reiniciar") { dialog, which ->
+            Toast.makeText(applicationContext,
+                "Jogo reiniciado!", Toast.LENGTH_SHORT).show()
+            reiniciar()
+        }
+
+        builder.setNegativeButton("Fechar") { dialog, which ->
+            Toast.makeText(applicationContext,
+                "Jogo finalizado", Toast.LENGTH_SHORT).show()
+            this.finish()
+        }
+
+
+        builder.show()
+
     }
 
 }
