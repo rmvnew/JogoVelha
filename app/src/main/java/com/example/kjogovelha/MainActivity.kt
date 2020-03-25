@@ -1,15 +1,12 @@
 package com.example.kjogovelha
 
 import android.app.AlertDialog
-import android.content.DialogInterface
-import android.media.MediaPlayer
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kjogovelha.base.PrinterBase
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +24,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        status.text = "Clique para iniciar!"
+        //status.setText("Clique para iniciar!")
+
     }
 
 
@@ -38,15 +36,18 @@ class MainActivity : AppCompatActivity() {
 
            if (currentPlayer == 1) {
                btnSelected.text = "X"
-               btnSelected.setBackgroundResource(R.color.AMARELO)
+               btnSelected.setBackgroundResource(R.drawable.gradiente_background_button_orange)
+               btnSelected.setTextColor(Color.parseColor("#006400"))
+
                playerOne.add(position)
-               status.text = "Player 1 jogou"
+               status.setText("Player 1 jogou")
                currentPlayer = 2
            } else {
                btnSelected.text = "O"
-               btnSelected.setBackgroundResource(R.color.VERDE_CLARO)
+               btnSelected.setBackgroundResource(R.drawable.gradiente_background_button_green)
+               btnSelected.setTextColor(Color.parseColor("#FFD700"))
                playerTwo.add(position)
-               status.text = "Player 2 jogou"
+               status.setText("Player 2 jogou")
                currentPlayer = 1
            }
 
@@ -81,6 +82,70 @@ class MainActivity : AppCompatActivity() {
         R.id.btn9 -> play(9,view as Button)
         else -> play(0, view as Button)
     }
+
+
+    fun limparBtn(){
+
+        btn1.isClickable = true
+        btn1.setText("")
+        btn1.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+        btn2.isClickable = true
+        btn2.setText("")
+        btn2.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+        btn3.isClickable = true
+        btn3.setText("")
+        btn3.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+        btn4.isClickable = true
+        btn4.setText("")
+        btn4.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+        btn5.isClickable = true
+        btn5.setText("")
+        btn5.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+        btn6.isClickable = true
+        btn6.setText("")
+        btn6.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+        btn7.isClickable = true
+        btn7.setText("")
+        btn7.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+        btn8.isClickable = true
+        btn8.setText("")
+        btn8.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+        btn9.isClickable = true
+        btn9.setText("")
+        btn9.setBackgroundResource(R.drawable.gradiente_background_button)
+        //#########
+
+    }
+
+//    fun btnclear(view: View) = when(view.id){
+//
+//        R.id.btn1 -> limparBtn(view as Button)
+//        R.id.btn2 -> limparBtn(view as Button)
+//        R.id.btn3 -> limparBtn(view as Button)
+//        R.id.btn4 -> limparBtn(view as Button)
+//        R.id.btn5 -> limparBtn(view as Button)
+//        R.id.btn6 -> limparBtn(view as Button)
+//        R.id.btn7 -> limparBtn(view as Button)
+//        R.id.btn8 -> limparBtn(view as Button)
+//        R.id.btn9 -> limparBtn(view as Button)
+//        else -> limparBtn( view as Button)
+//    }
 
     fun checkResult(){
         val row1 = listOf(1,2,3)
@@ -157,9 +222,16 @@ class MainActivity : AppCompatActivity() {
     fun reiniciar(){
         playerOne.clear()
         playerTwo.clear()
-        setContentView(R.layout.activity_main)
+//        finish();
+//        startActivity(getIntent());
+
+      //  setContentView(R.layout.activity_main)
+        limparBtn()
+        status.setText("Novo jogo começou!!!")
         jogo_rodando = true
         rodadas = 1
+
+
 
     }
 
@@ -187,5 +259,7 @@ class MainActivity : AppCompatActivity() {
         builder.show()
 
     }
+
+
 
 }

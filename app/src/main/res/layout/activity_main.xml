@@ -36,21 +36,24 @@
 
             <Button
                 android:id="@+id/btn1"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
             <Button
                 android:id="@+id/btn2"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
             <Button
                 android:id="@+id/btn3"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
 
 
@@ -63,21 +66,24 @@
 
             <Button
                 android:id="@+id/btn4"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
             <Button
                 android:id="@+id/btn5"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
             <Button
                 android:id="@+id/btn6"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
 
 
@@ -90,21 +96,24 @@
 
             <Button
                 android:id="@+id/btn7"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
             <Button
                 android:id="@+id/btn8"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
             <Button
                 android:id="@+id/btn9"
+                style="@style/BtnGame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                style="@style/BtnGame"/>
+                android:background="@drawable/gradiente_background_button" />
 
 
 
