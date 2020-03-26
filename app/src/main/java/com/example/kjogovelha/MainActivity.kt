@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //status.setText("Clique para iniciar!")
 
     }
 
@@ -133,19 +132,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    fun btnclear(view: View) = when(view.id){
-//
-//        R.id.btn1 -> limparBtn(view as Button)
-//        R.id.btn2 -> limparBtn(view as Button)
-//        R.id.btn3 -> limparBtn(view as Button)
-//        R.id.btn4 -> limparBtn(view as Button)
-//        R.id.btn5 -> limparBtn(view as Button)
-//        R.id.btn6 -> limparBtn(view as Button)
-//        R.id.btn7 -> limparBtn(view as Button)
-//        R.id.btn8 -> limparBtn(view as Button)
-//        R.id.btn9 -> limparBtn(view as Button)
-//        else -> limparBtn( view as Button)
-//    }
 
     fun checkResult(){
         val row1 = listOf(1,2,3)
@@ -185,9 +171,6 @@ class MainActivity : AppCompatActivity() {
 
     fun gameOver(frase:String, jogador:String, vencedor:Int){
 
-//        var printer = PrinterBase(this)
-//        printer.setupPrinter()
-
         Toast.makeText(this,frase,Toast.LENGTH_LONG).show()
         status.text = "Payer $jogador ganhou!!!"
         jogo_rodando = false
@@ -195,20 +178,11 @@ class MainActivity : AppCompatActivity() {
         if(vencedor == 1){
             jogador_vencedor = "Player 1"
             abrirDialogo("Player 1")
-//            Thread(Runnable {
-//                printer.init()
-//                printer.printStr("Player 1 venceu",null)
-//                printer.start()
-//            }).start()
 
         }else{
             jogador_vencedor = "Player 2"
             abrirDialogo("Player 2")
-//            Thread(Runnable {
-//                printer.init()
-//                printer.printStr("Player 2 venceu",null)
-//                printer.start()
-//            }).start()
+
         }
 
 
@@ -222,10 +196,6 @@ class MainActivity : AppCompatActivity() {
     fun reiniciar(){
         playerOne.clear()
         playerTwo.clear()
-//        finish();
-//        startActivity(getIntent());
-
-      //  setContentView(R.layout.activity_main)
         limparBtn()
         status.setText("Novo jogo começou!!!")
         jogo_rodando = true
@@ -241,7 +211,7 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Fim de jogo")
         builder.setMessage("$player ganhou!!\niniciar novo jogo?")
-        //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
+
 
         builder.setPositiveButton("Reiniciar") { dialog, which ->
             Toast.makeText(applicationContext,
